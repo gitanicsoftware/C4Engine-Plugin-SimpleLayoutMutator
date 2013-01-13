@@ -27,7 +27,6 @@ THE SOFTWARE.
 #include "C4Interface.h"
 #include "C4Configurable.h"
 #include "C4Configuration.h"
-#include "C4Tree.h"
 #include "C4Types.h"
 
 #include "LayoutMutatorPlugin.h"
@@ -95,7 +94,7 @@ namespace C4{
 		kReseizeCheckOptionCount
 	};
 
-	class LayoutMutator : public Mutator, public Tree<LayoutMutator>{
+	class LayoutMutator : public Mutator{
 		friend class MutatorReg<LayoutMutator>;
 
 	private:

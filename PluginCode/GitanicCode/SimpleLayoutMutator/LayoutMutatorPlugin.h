@@ -29,7 +29,7 @@ THE SOFTWARE.
 #include "C4Map.h"
 
 #include "LayoutMutator.h"
-#include "PanelMutatorTree.h"
+
 
 
 extern "C"
@@ -41,19 +41,17 @@ namespace C4
 {
 	
 	class LayoutMutator;
-	class MutatorTreeMap;
+	
 	class GitanicLayoutMutatorPlugin : public Plugin, public Singleton<GitanicLayoutMutatorPlugin>
 	{
 		private:
 			MutatorReg<LayoutMutator> layoutMutatorReg;
-			MutatorTreeMap * rootPanelMap;
+			
 			CommandObserver<GitanicLayoutMutatorPlugin> openPanelObserver;
 		public:
 			
 			void OpenPanelFunction(Command *command, const char *text);
-			MutatorTreeMap * getMutatorTreeMap(void){
-				return rootPanelMap;
-			}
+			
 			GitanicLayoutMutatorPlugin();
 			~GitanicLayoutMutatorPlugin();	
 	};
