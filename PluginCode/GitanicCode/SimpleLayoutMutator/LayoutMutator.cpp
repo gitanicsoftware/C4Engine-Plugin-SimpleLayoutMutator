@@ -67,7 +67,7 @@ LayoutMutator::LayoutMutator() : Mutator(kMutatorLayout){
 	dirty = true;
 	resizeCheckOption = kRefreshContinually;
 
-	Widget * rootPanel;
+	Widget * rootPanel = nullptr;
 
 }
 
@@ -360,6 +360,10 @@ void LayoutMutator::Move(void){
 	Widget * widget = GetTargetWidget();
 	
 	Widget * rootPanel = widget->GetRootWidget();
+	if(!rootPanel){
+		return;
+	}
+
 	Point2D size = Point2D();
 	Point3D position = Point3D();
 	int32 parentX = 0;
@@ -406,7 +410,7 @@ void LayoutMutator::Move(void){
 			margin[kSideTop] + offset[kSideTop] - offset[kSideBottom];
 	position.x = x;
 	position.y = y;
-
+	position.z = widget->GetWidgetPosition().z;
 	widget->SetWidgetPosition(
 		position);
 	widget->Invalidate();
